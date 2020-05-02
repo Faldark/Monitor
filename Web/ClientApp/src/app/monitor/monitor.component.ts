@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, Inject } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
 
 interface Monitor {
   url: string;
@@ -47,11 +48,15 @@ const COUNTRIES: Monitor[] = [
   templateUrl: './monitor.component.html'
 })
 export class MonitorComponent {
-  public currentCount = 0;
-  countries = COUNTRIES;
-  public incrementCounter() {
-    this.currentCount++;
+  public monitors: Monitor[];
+
+
+  constructor(http: HttpClient, @Inject('BASE_URL') baseUrl: string) {
+    http.get<Monitor[]>(baseUrl + 'monitor').subscribe(result => {
+      this.monitors = result;
+    }, error => console.error(error));
   }
 }
+
 
 

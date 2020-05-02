@@ -37,17 +37,17 @@
     </tr>
     </thead>
     <tbody>
-    <tr *ngFor="let country of countries; index as i">
+    <tr *ngFor="let monitor of monitors; index as i">
       <th scope="row">{{ i + 1 }}</th>
       <td>
         <svg height="50" width="50">
-            <circle cx="25" cy="25" r="20"  attr.fill="{{country.color}}" />
+            <circle cx="25" cy="25" r="20"  attr.fill="{{monitor.color}}" />
           </svg>
-        {{ country.url }}
+        {{ monitor.url }}
       </td>
-      <td>{{ country.responseTime | number }}</td>
-      <td>{{ country.status  }}</td>
-      <td>{{ country.errorCode | number }}</td>
+      <td>{{ monitor.responseTime | number }}</td>
+      <td>{{ monitor.status  }}</td>
+      <td>{{ monitor.errorCode | number }}</td>
     </tr>
     </tbody>
   
