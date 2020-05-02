@@ -1,0 +1,55 @@
+<p>Table is just a mapping of objects to table rows with <code>ngFor</code></p>
+
+<!-- <table class="table table-striped">
+  <thead>
+  <tr>
+    <th scope="col">#</th>
+    <th scope="col">Country</th>
+    <th scope="col">Area</th>
+    <th scope="col">Population</th>
+  </tr>
+  </thead>
+
+
+
+  <tbody>
+    <tr *ngFor="let country of countries; index as i">
+
+        <app-site-component [index]="i" [country]="country">
+
+        </app-site-component>
+
+
+    </tr>
+    </tbody>
+</table> -->
+
+
+
+<table class="table table-striped">
+    <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">URL to Monitor</th>
+      <th scope="col">Response time</th>
+      <th scope="col">Status</th>
+      <th scope="col">Error code</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let country of countries; index as i">
+      <th scope="row">{{ i + 1 }}</th>
+      <td>
+        <svg height="50" width="50">
+            <circle cx="25" cy="25" r="20"  attr.fill="{{country.color}}" />
+          </svg>
+        {{ country.url }}
+      </td>
+      <td>{{ country.responseTime | number }}</td>
+      <td>{{ country.status  }}</td>
+      <td>{{ country.errorCode | number }}</td>
+    </tr>
+    </tbody>
+  
+  
+  </table>
