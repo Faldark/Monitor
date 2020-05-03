@@ -8,5 +8,6 @@ namespace Web.Common.Interfaces
     public interface ICsvService
     {
         public List<CsvEntity> ReadCsvFile();
+        public void DeleteRecordFromCsvFile(string recordUrl);
     }
 }

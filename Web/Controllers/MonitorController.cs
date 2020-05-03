@@ -24,5 +24,11 @@ namespace Web.Controllers
             var urls = _csvService.ReadCsvFile();
             return await _monitorService.PingAddressesAsync(urls);
         }
+
+        [HttpDelete()]
+        public void Delete([FromBody]CsvEntity entity)
+        {
+            _csvService.DeleteRecordFromCsvFile(entity.Url);
+        }
     }
 }
