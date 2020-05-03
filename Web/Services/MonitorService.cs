@@ -17,7 +17,16 @@ namespace Web.Services
             {
                 try
                 {
-                    var request = await pingSender.SendPingAsync(new Uri(site.Url).Host, 7000);
+                    string ip;
+                    if (site.Url.Contains("www"))
+                    {
+                        ip = site.Url;
+                    }
+                    else
+                    {
+                        ip = new Uri(site.Url).Host;
+                    }
+                    var request = await pingSender.SendPingAsync(ip, 7000);
                     if (request.Status == IPStatus.TimedOut)
                     {
                         results.Add(new MonitorEntity

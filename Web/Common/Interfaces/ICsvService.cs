@@ -9,5 +9,6 @@ namespace Web.Common.Interfaces
     {
         public List<CsvEntity> ReadCsvFile();
         public void DeleteRecordFromCsvFile(string recordUrl);
+        public void AddNewRecord(CsvEntity entity);
     }
 }

@@ -12,7 +12,6 @@ interface Monitor {
   errorCode: number;
 }
 
-
 @Component({
   selector: 'app-monitor-component',
   templateUrl: './monitor.component.html'

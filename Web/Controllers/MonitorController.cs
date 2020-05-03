@@ -25,10 +25,16 @@ namespace Web.Controllers
             return await _monitorService.PingAddressesAsync(urls);
         }
 
-        [HttpDelete()]
+        [HttpDelete]
         public void Delete([FromBody]CsvEntity entity)
         {
             _csvService.DeleteRecordFromCsvFile(entity.Url);
+        }
+
+        [HttpPost]
+        public void Create([FromBody]CsvEntity entity)
+        {
+            _csvService.AddNewRecord(entity);
         }
     }
 }

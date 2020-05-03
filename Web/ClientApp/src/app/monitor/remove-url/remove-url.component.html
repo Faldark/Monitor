@@ -1,19 +1,15 @@
 <div class="container">
   <div class="row custom-wrapper">
     <div class="col-md-12">
-
-
       <!-- Form starts -->
       <form [formGroup]="removeForm" (ngSubmit)="onSubmit()">
         <div class="group-gap">
           <div class="d-block my-3">
             <div class="mb-3">
-              <select class="custom-select"  formControlName="monitorName">
+              <select class="custom-select" formControlName="monitorName">
                 <option value="">Choose your url</option>
                 <option *ngFor="let monitor of monitors" [ngValue]="monitor">{{monitor}}</option>
-             </select>
-
-              {{monitors | json}}
+              </select>
               <div class="invalid-feedback" *ngIf="isSubmitted && monitorName.errors?.required">
                 <sup>*</sup>Please enter your city name
               </div>

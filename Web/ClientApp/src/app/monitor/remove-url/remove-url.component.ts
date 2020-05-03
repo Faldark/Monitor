@@ -11,9 +11,9 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 export class RemoveUrlComponent implements OnInit {
   constructor(private readonly route: ActivatedRoute,
     private readonly fb: FormBuilder,
-    private readonly http: HttpClient, @Inject('BASE_URL') baseUrl: string, 
+    private readonly http: HttpClient, @Inject('BASE_URL') baseUrl: string,
     private readonly router: Router) {
-      this.url = baseUrl;
+    this.url = baseUrl;
   }
   private url: string;
   public monitors: string[];
@@ -28,7 +28,6 @@ export class RemoveUrlComponent implements OnInit {
         this.monitors = routeData;
       });
   }
-
 
   get monitorName() {
     return this.removeForm.get('monitorName');
@@ -50,12 +49,7 @@ export class RemoveUrlComponent implements OnInit {
       console.log(options);
       this.http.delete<string>(this.url + 'monitor', options).subscribe(() => {
         this.router.navigate(['']);
-        console.log('success');
       }, error => console.error(error));
     }
-
   }
 }
-
-
-
