@@ -49,7 +49,7 @@ export class RemoveUrlComponent implements OnInit {
       };
       console.log(options);
       this.http.delete<string>(this.url + 'monitor', options).subscribe(() => {
-        this.router.navigate(['monitor']);
+        this.router.navigate(['']);
         console.log('success');
       }, error => console.error(error));
     }

@@ -30,7 +30,9 @@ import { RemoveUrlComponent } from './monitor/remove-url/remove-url.component';
     FormsModule,
     ReactiveFormsModule,
     RouterModule.forRoot([
-      { path: '', component: HomeComponent, pathMatch: 'full' },
+      {
+        path: '', component: MonitorComponent
+      },
       { path: 'counter', component: CounterComponent },
       { path: 'fetch-data', component: FetchDataComponent },
       {

@@ -17,15 +17,30 @@ namespace Web.Services
             {
                 try
                 {
-                    var request = await pingSender.SendPingAsync(new Uri(site.Url).Host, 10000);
-                    results.Add(new MonitorEntity
+                    var request = await pingSender.SendPingAsync(new Uri(site.Url).Host, 7000);
+                    if (request.Status == IPStatus.TimedOut)
                     {
-                        Url = site.Url,
-                        ResponseTime = (int)request.RoundtripTime,
-                        Status = (int)request.RoundtripTime < 5000  ? "OK" : "SLOW",
-                        Color = (int)request.RoundtripTime < 5000 ? "Green" : "Yellow",
+                        results.Add(new MonitorEntity
+                        {
+                            Url = site.Url,
+                            ResponseTime = 7000,
+                            Status = "ERROR",
+                            Color = "RED",
+                            ErrorCode = 408
 
-                    });
+                        });
+                    }
+                    else
+                    {
+                        results.Add(new MonitorEntity
+                        {
+                            Url = site.Url,
+                            ResponseTime = (int)request.RoundtripTime,
+                            Status = (int)request.RoundtripTime < 5000 ? "OK" : "SLOW",
+                            Color = (int)request.RoundtripTime < 5000 ? "Green" : "Yellow",
+
+                        });
+                    }
                 }
                 catch (PingException)
                 {
