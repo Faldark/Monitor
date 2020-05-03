@@ -1,0 +1,9 @@
+<form [formGroup]="addForm" (ngSubmit)="onSubmit()">
+  
+  <input type="string" placeholder="Url" formControlName="Url">
+  <input type="string" placeholder="Site Name" formControlName="SiteName">
+  <input type="string" placeholder="Comments" formControlName="Comments">
+  <input type="string" placeholder="Owner Phone" formControlName="OwnerPhone">
+
+  <button class="btn btn-primary" type="submit">Submit</button>
+</form>

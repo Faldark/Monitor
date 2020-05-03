@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
 
@@ -9,6 +9,9 @@ import { NavMenuComponent } from './nav-menu/nav-menu.component';
 import { HomeComponent } from './home/home.component';
 import { CounterComponent } from './counter/counter.component';
 import { FetchDataComponent } from './fetch-data/fetch-data.component';
+import { MonitorComponent } from './monitor/monitor.component';
+import { AddUrlComponent } from './monitor/add-url/add-url.component';
+import { RemoveUrlComponent } from './monitor/remove-url/remove-url.component';
 
 @NgModule({
   declarations: [
@@ -16,16 +19,28 @@ import { FetchDataComponent } from './fetch-data/fetch-data.component';
     NavMenuComponent,
     HomeComponent,
     CounterComponent,
-    FetchDataComponent
+    FetchDataComponent,
+    MonitorComponent,
+    AddUrlComponent,
+    RemoveUrlComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
     HttpClientModule,
     FormsModule,
+    ReactiveFormsModule,
     RouterModule.forRoot([
-      { path: '', component: HomeComponent, pathMatch: 'full' },
+      {
+        path: '', component: MonitorComponent
+      },
       { path: 'counter', component: CounterComponent },
       { path: 'fetch-data', component: FetchDataComponent },
+      {
+        path: 'monitor', component: MonitorComponent, children: [
+          { path: 'addUrl', component: AddUrlComponent },
+          { path: 'removeUrl', component: RemoveUrlComponent }
+        ]
+      },
     ])
   ],
   providers: [],

@@ -1,10 +1,11 @@
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.SpaServices.AngularCli;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Web.Common.Interfaces;
+using Web.Services;
 
 namespace Web
 {
@@ -26,6 +27,8 @@ namespace Web
             {
                 configuration.RootPath = "ClientApp/dist";
             });
+            services.AddScoped<ICsvService, CsvService>();
+            services.AddScoped<IMonitorService, MonitorService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
