@@ -18,13 +18,13 @@ namespace Web.Services
                 try
                 {
                     string ip;
-                    if (site.Url.Contains("www"))
+                    if (site.Url.Contains("http"))
                     {
-                        ip = site.Url;
+                        ip = new Uri(site.Url).Host;
                     }
                     else
                     {
-                        ip = new Uri(site.Url).Host;
+                        ip = site.Url;
                     }
                     var request = await pingSender.SendPingAsync(ip, 7000);
                     if (request.Status == IPStatus.TimedOut)

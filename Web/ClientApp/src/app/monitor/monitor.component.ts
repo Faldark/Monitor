@@ -1,4 +1,4 @@
-import { Component, Inject, OnInit } from '@angular/core';
+import { Component, Inject, OnInit, OnDestroy } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { timer, Observable, Subscription } from 'rxjs';
@@ -16,7 +16,7 @@ interface Monitor {
   selector: 'app-monitor-component',
   templateUrl: './monitor.component.html'
 })
-export class MonitorComponent implements OnInit {
+export class MonitorComponent implements OnInit, OnDestroy {
   public monitors: Monitor[];
   private url: string;
   subscription: Subscription;
@@ -28,6 +28,10 @@ export class MonitorComponent implements OnInit {
     this.subscription = timer(0, 120000).pipe(
       switchMap(() => this.getMonitors())
     ).subscribe(monitors => this.monitors = monitors);
+  }
+
+  ngOnDestroy(): void {
+    this.subscription.unsubscribe();
   }
 
   addUrl(): void {
