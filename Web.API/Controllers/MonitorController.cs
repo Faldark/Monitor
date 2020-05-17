@@ -4,7 +4,7 @@ using Microsoft.AspNetCore.Mvc;
 using Web.Common;
 using Web.Common.Interfaces;
 
-namespace Web.Controllers
+namespace Web.API.Controllers
 {
     [Route("[controller]")]
     [ApiController]
