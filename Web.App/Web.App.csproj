@@ -11,6 +11,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Remove="dist" />
+    <None Include="..\.dockerignore" Link=".dockerignore">
+      <DependentUpon>$(DockerDefaultDockerfile)</DependentUpon>
+    </None>
     <None Update="wwwroot\**\*;web.config">
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
     </None>
